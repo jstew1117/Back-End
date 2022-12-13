@@ -15,7 +15,7 @@ module.exports = {
 
      let teacher = [];
 
-     for (let i = 1; i < 1; i++) {
+     for (let i = 1; i < 10; i++) {
    
        teacher.push({
          name: `teacher: ${i}`,

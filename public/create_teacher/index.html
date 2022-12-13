@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Teacher</title>
+</head>
+<body>
+    <h1>Create Teacher</h1>
+    <br>
+    <div><a href="/">Back</a></div>
+    <br>
+
+    <form id="create_teacher">
+        <label>Name:</label>
+        <input type="text" name="name">
+
+        <label>Email:</label>
+        <input type="text" name="email">
+        <br>
+        <br>
+        <label>Subject:</label>
+        <input type="text" name="subject">
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("create_teacher");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            fetch("/api/teacher", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: event.target.name.value,
+                    email: event.target.email.value,
+                    subject: event.target.email.value
+                })
+            }).then(res => res.json()).then(data => {
+                console.log(data);
+                window.location = "/"
+            })
+        })
+    </script>
+
+</body>
+</html>
